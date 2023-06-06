@@ -1,0 +1,37 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Solution 
+{
+	public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) 
+	{
+		// Write your code here.
+		int diff = -1;
+		int n = permutation.size();
+		for(int i = n-2; i >= 0; i--){
+			if(permutation.get(i) < permutation.get(i+1)){
+				diff = i;
+				break;
+			}
+		}
+		if(diff == -1){
+			Collections.sort(permutation);
+			return permutation;
+		}
+		for(int i = n-1; i > diff; i--){
+			if(permutation.get(i) > permutation.get(diff)){ 
+				int tmp = permutation.get(i);
+                permutation.set(i, permutation.get(diff));
+                permutation.set(diff, tmp);
+                break;
+			}
+		}
+		List<Integer> sub = permutation.subList(diff + 1, n);
+        Collections.reverse(sub); 
+
+		return permutation;
+		
+	}
+}
