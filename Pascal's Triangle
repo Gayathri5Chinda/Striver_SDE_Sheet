@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.* ;
+
+import java.util.ArrayList;
+
+public class Solution {
+	public static ArrayList<ArrayList<Long>> printPascal(int n) {
+                 // Write your code here.
+				 ArrayList<ArrayList<Long>> ans = new ArrayList<ArrayList<Long>>();
+				 for(int i = 1; i <= n; i++){
+					 if(i == 1){
+						 ArrayList<Long> sub = new ArrayList<Long>();
+						 Long curr = 1l;
+						 sub.add(curr);
+						 ans.add(sub);
+					 }
+					 else if(i == 2){
+						 ArrayList<Long> sub = new ArrayList<Long>();
+						 Long curr = 1l;
+						 sub.add(curr);
+						 sub.add(curr);
+						 ans.add(sub);
+					 }
+					 else{
+						 ArrayList<Long> sub = new ArrayList<Long>();
+						 Long curr = 1l;
+						 sub.add(curr);
+						 for(int j = 0; j < ans.get(i-2).size()-1; j++){
+							 Long v = ans.get(i-2).get(j)+ans.get(i-2).get(j+1);
+							 sub.add(v);
+						 }
+						 sub.add(curr);
+						 ans.add(sub);
+					 }
+
+				 }
+				 return ans;
+	}
+}
