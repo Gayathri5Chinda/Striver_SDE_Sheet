@@ -1,0 +1,14 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int uniquePaths(int m, int n) {
+		// Write your code here.
+		int top = n+m-2;
+		int down = m-1;
+		double result = 1;
+		for(int i = 1; i <= down; i++)
+			result = result *(top-down+i)/i;
+		
+		return (int)result;
+	}
+}
