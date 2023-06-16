@@ -1,0 +1,27 @@
+  public static String fourSum(int[] arr, int target, int n) {
+    Arrays.sort(arr);
+    for(int i = 0; i < arr.length; i++){
+      if(i > 0 && arr[i] == arr[i-1]) continue;
+      for(int j = i+1; j < arr.length; j++){
+        if(j > i+1 && arr[j] == arr[j-1]) continue;
+        int low = j+1, high = arr.length-1;
+        while(low < high){
+          int sum = arr[i];
+          sum += arr[j];
+          sum += arr[low];
+          sum += arr[high];
+          if(sum == target){
+            return "Yes";
+          }
+          else if(sum < target){
+            low++;
+          }
+          else{
+            high--;
+          }
+        }
+      }
+    }
+    return "No";
+  }
+}
