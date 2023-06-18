@@ -1,0 +1,19 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String input) 
+    {
+		//write your code here
+		HashMap<Character, Integer> map = new HashMap<>();
+	    int left = 0, right = 0, len = 0;
+		int n = input.length();
+		while(right < n){
+			if(map.containsKey(input.charAt(right))) left = Math.max(map.get(input.charAt(right))+1, left);
+			map.put(input.charAt(right), right);
+			len = Math.max(right-left+1, len);
+			right++;
+		}
+		return len;
+	}
+}
