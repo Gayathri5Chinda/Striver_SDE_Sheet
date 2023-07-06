@@ -1,0 +1,49 @@
+public class Solution {
+   static LinkedListNode addTwoNumbers(LinkedListNode head1, LinkedListNode head2) {
+       int carry = 0;
+       LinkedListNode ll = new LinkedListNode(-1);
+       LinkedListNode temp = ll;
+
+       while(head1 != null && head2 != null){
+           int val = head1.data + head2.data + carry;
+           carry = val/10;
+           val = val%10;
+           LinkedListNode n = new LinkedListNode(val);
+           temp.next = n;
+           temp = n;
+
+           head1 = head1.next;
+           head2 = head2.next;
+       }
+
+       while(head1 != null){
+           int val = head1.data + carry;
+           carry = val/10;
+           val = val%10;
+           LinkedListNode n = new LinkedListNode(val);
+           temp.next = n;
+           temp = n;
+
+           head1 = head1.next;
+       }
+
+       while(head2 != null){
+           int val = head2.data + carry;
+           carry = val/10;
+           val = val%10;
+           LinkedListNode n = new LinkedListNode(val);
+           temp.next = n;
+           temp = n;
+
+           head2 = head2.next;
+       }
+
+       if(carry > 0){
+          LinkedListNode n = new LinkedListNode(carry);
+           temp.next = n;
+           temp = n;
+       }
+
+       return ll.next;
+    }
+}
